@@ -27,7 +27,6 @@ public class VENTAS {
         this.total = total;
         this.idTienda = idTienda;
     }
-
     public VENTAS(int idVentas, String nitCliente, double anticipoTotalVentas, String fechaVentas, double totalVentas, double total, int idPedido, String idTienda) {
         this.idVentas = idVentas;
         this.nitCliente = nitCliente;
