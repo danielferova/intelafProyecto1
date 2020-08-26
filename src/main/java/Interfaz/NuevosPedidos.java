@@ -63,7 +63,7 @@ public class NuevosPedidos extends javax.swing.JInternalFrame {
         ResultSet rs = conexion.getTabla("SELECT Nombre_Producto FROM PRODUCTO");
         try {
             while (rs.next()) {
-                nombreProducto.addItem(rs.getString(1));
+                productoN.addItem(rs.getString(1));
             }
 
         } catch (Exception e) {
@@ -83,27 +83,26 @@ public class NuevosPedidos extends javax.swing.JInternalFrame {
         lblNombre = new javax.swing.JLabel();
         lblCodigoFabricante = new javax.swing.JLabel();
         ventaCantidad = new javax.swing.JTextField();
-        productoDescripcion = new javax.swing.JTextField();
         lblDescripcion = new javax.swing.JLabel();
         registrarProducto = new javax.swing.JButton();
         lblCodigoFabricante1 = new javax.swing.JLabel();
         codigoCliente = new javax.swing.JComboBox<>();
         lblNombre1 = new javax.swing.JLabel();
         ventaFecha = new com.toedter.calendar.JDateChooser();
-        nombreProducto = new javax.swing.JComboBox<>();
+        productoN = new javax.swing.JComboBox<>();
         lblCodigoFabricante2 = new javax.swing.JLabel();
         lblCodigoFabricante4 = new javax.swing.JLabel();
         lblCodigoFabricante6 = new javax.swing.JLabel();
         comboTienda = new javax.swing.JComboBox<>();
         lblCodigoFabricante7 = new javax.swing.JLabel();
-        ventaExitencia = new javax.swing.JLabel();
-        ventaNombreCliente = new javax.swing.JLabel();
-        ventaPrecio = new javax.swing.JLabel();
-        ventaPrecio1 = new javax.swing.JLabel();
         lblCodigoFabricante5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        lblCodigoFabricante8 = new javax.swing.JLabel();
+        jTablePedidos = new javax.swing.JTable();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 101, 0));
         setClosable(true);
@@ -111,196 +110,127 @@ public class NuevosPedidos extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("NUEVOS PEDIDOS\n");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblNombre.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(254, 254, 254));
         lblNombre.setText("Producto:");
+        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
 
-        lblCodigoFabricante.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblCodigoFabricante.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lblCodigoFabricante.setForeground(new java.awt.Color(254, 254, 254));
         lblCodigoFabricante.setText("Inventario:");
+        getContentPane().add(lblCodigoFabricante, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
 
-        ventaCantidad.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        ventaCantidad.setBackground(new java.awt.Color(254, 254, 254));
+        ventaCantidad.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        ventaCantidad.setForeground(new java.awt.Color(1, 1, 1));
         ventaCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ventaCantidadActionPerformed(evt);
             }
         });
+        getContentPane().add(ventaCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 240, -1));
 
-        productoDescripcion.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        lblDescripcion.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lblDescripcion.setForeground(new java.awt.Color(254, 254, 254));
+        lblDescripcion.setText("Descripción:");
+        getContentPane().add(lblDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, -1, -1));
 
-        lblDescripcion.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        lblDescripcion.setText("Descripcion:");
-
-        registrarProducto.setBackground(new java.awt.Color(102, 255, 0));
-        registrarProducto.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        registrarProducto.setText("Registrar");
+        registrarProducto.setBackground(new java.awt.Color(1, 1, 1));
+        registrarProducto.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        registrarProducto.setForeground(new java.awt.Color(254, 254, 254));
+        registrarProducto.setText("Ingresar");
         registrarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarProductoActionPerformed(evt);
             }
         });
+        getContentPane().add(registrarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 130, 60));
 
-        lblCodigoFabricante1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblCodigoFabricante1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lblCodigoFabricante1.setForeground(new java.awt.Color(254, 254, 254));
         lblCodigoFabricante1.setText("Código Cliente:");
+        getContentPane().add(lblCodigoFabricante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 85, -1, -1));
 
         codigoCliente.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        getContentPane().add(codigoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 77, 235, -1));
 
-        lblNombre1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        lblNombre1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lblNombre1.setForeground(new java.awt.Color(254, 254, 254));
         lblNombre1.setText("Fecha:");
+        getContentPane().add(lblNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, 36));
+        getContentPane().add(ventaFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, -1, 36));
 
-        nombreProducto.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        productoN.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        getContentPane().add(productoN, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 125, 235, -1));
 
-        lblCodigoFabricante2.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblCodigoFabricante2.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lblCodigoFabricante2.setForeground(new java.awt.Color(254, 254, 254));
         lblCodigoFabricante2.setText("Cantidad:");
+        getContentPane().add(lblCodigoFabricante2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
 
-        lblCodigoFabricante4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblCodigoFabricante4.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lblCodigoFabricante4.setForeground(new java.awt.Color(254, 254, 254));
         lblCodigoFabricante4.setText("Precio:");
+        getContentPane().add(lblCodigoFabricante4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
 
-        lblCodigoFabricante6.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblCodigoFabricante6.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lblCodigoFabricante6.setForeground(new java.awt.Color(254, 254, 254));
         lblCodigoFabricante6.setText("Código Tienda:");
+        getContentPane().add(lblCodigoFabricante6, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 28, -1, -1));
 
         comboTienda.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        getContentPane().add(comboTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 28, 235, -1));
 
-        lblCodigoFabricante7.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblCodigoFabricante7.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lblCodigoFabricante7.setForeground(new java.awt.Color(254, 247, 247));
         lblCodigoFabricante7.setText("Nombre:");
+        getContentPane().add(lblCodigoFabricante7, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 82, -1, -1));
 
-        ventaExitencia.setFont(new java.awt.Font("Dialog", 0, 22)); // NOI18N
-
-        ventaNombreCliente.setFont(new java.awt.Font("Dialog", 0, 22)); // NOI18N
-
-        ventaPrecio.setFont(new java.awt.Font("Dialog", 0, 22)); // NOI18N
-
-        ventaPrecio1.setFont(new java.awt.Font("Dialog", 0, 22)); // NOI18N
-
-        lblCodigoFabricante5.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblCodigoFabricante5.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lblCodigoFabricante5.setForeground(new java.awt.Color(254, 254, 254));
         lblCodigoFabricante5.setText("Total a Pagar:");
+        getContentPane().add(lblCodigoFabricante5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePedidos.setBackground(new java.awt.Color(254, 254, 254));
+        jTablePedidos.setForeground(new java.awt.Color(1, 1, 1));
+        jTablePedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Producto", "Precio"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTablePedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablePedidosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTablePedidos);
 
-        lblCodigoFabricante8.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        lblCodigoFabricante8.setText("Lista de Articulos");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 620, 360));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblNombre)
-                                            .addComponent(lblCodigoFabricante)
-                                            .addComponent(lblCodigoFabricante4))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblCodigoFabricante2)
-                                            .addGap(17, 17, 17)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(lblCodigoFabricante5)))
-                                .addGap(379, 379, 379)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCodigoFabricante6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(comboTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)
-                                .addComponent(lblNombre1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ventaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(86, 86, 86)
-                                .addComponent(registrarProducto))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCodigoFabricante1)
-                                    .addComponent(lblCodigoFabricante7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(codigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ventaNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ventaCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ventaExitencia, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ventaPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ventaPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(224, 224, 224)
-                                .addComponent(lblCodigoFabricante8))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(lblDescripcion)
-                        .addGap(29, 29, 29)
-                        .addComponent(productoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 875, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(registrarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCodigoFabricante6)
-                        .addComponent(comboTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ventaFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblNombre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCodigoFabricante1)
-                            .addComponent(codigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCodigoFabricante7)
-                            .addComponent(ventaNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNombre)
-                            .addComponent(nombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCodigoFabricante2)
-                            .addComponent(ventaCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCodigoFabricante)
-                            .addComponent(ventaExitencia, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblCodigoFabricante4)
-                                .addGap(44, 44, 44)
-                                .addComponent(lblCodigoFabricante5))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(ventaPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
-                                .addComponent(ventaPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                        .addComponent(lblCodigoFabricante8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDescripcion)
-                    .addComponent(productoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47))
-        );
+        jTextField1.setBackground(new java.awt.Color(254, 254, 254));
+        jTextField1.setForeground(new java.awt.Color(1, 1, 1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 170, 30));
+
+        jTextField2.setBackground(new java.awt.Color(254, 254, 254));
+        jTextField2.setForeground(new java.awt.Color(1, 1, 1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 170, -1));
+
+        jTextField3.setBackground(new java.awt.Color(254, 254, 254));
+        jTextField3.setForeground(new java.awt.Color(1, 1, 1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, 150, -1));
+
+        jTextField4.setBackground(new java.awt.Color(254, 254, 254));
+        jTextField4.setText("jTextField4");
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 240, -1));
+
+        jTextField5.setBackground(new java.awt.Color(254, 254, 254));
+        jTextField5.setForeground(new java.awt.Color(1, 1, 1));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 450, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -313,12 +243,24 @@ public class NuevosPedidos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_registrarProductoActionPerformed
 
+    private void jTablePedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePedidosMouseClicked
+        // TODO add your handling code here:
+      //  int seleccion = jTablePedidos.rowAtPoint(evt.getPoint());
+       // productoN.setText(String.valueOf(jTablePedidos.getValueAt(seleccion, 0)));
+        
+    }//GEN-LAST:event_jTablePedidosMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> codigoCliente;
     private javax.swing.JComboBox<String> comboTienda;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablePedidos;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lblCodigoFabricante;
     private javax.swing.JLabel lblCodigoFabricante1;
     private javax.swing.JLabel lblCodigoFabricante2;
@@ -326,18 +268,12 @@ public class NuevosPedidos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblCodigoFabricante5;
     private javax.swing.JLabel lblCodigoFabricante6;
     private javax.swing.JLabel lblCodigoFabricante7;
-    private javax.swing.JLabel lblCodigoFabricante8;
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombre1;
-    private javax.swing.JComboBox<String> nombreProducto;
-    private javax.swing.JTextField productoDescripcion;
+    private javax.swing.JComboBox<String> productoN;
     private javax.swing.JButton registrarProducto;
     private javax.swing.JTextField ventaCantidad;
-    private javax.swing.JLabel ventaExitencia;
     private com.toedter.calendar.JDateChooser ventaFecha;
-    private javax.swing.JLabel ventaNombreCliente;
-    private javax.swing.JLabel ventaPrecio;
-    private javax.swing.JLabel ventaPrecio1;
     // End of variables declaration//GEN-END:variables
 }

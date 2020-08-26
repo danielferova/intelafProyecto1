@@ -84,7 +84,6 @@ public class EmpleadosMenu extends javax.swing.JFrame {
         registroCliente = new javax.swing.JMenuItem();
         registroTienda = new javax.swing.JMenuItem();
         registroProducto = new javax.swing.JMenuItem();
-        registroInventarioProducto = new javax.swing.JMenuItem();
         registroTiempoTiendas = new javax.swing.JMenuItem();
         generarVenta = new javax.swing.JMenu();
         realizarVenta = new javax.swing.JMenuItem();
@@ -296,15 +295,6 @@ public class EmpleadosMenu extends javax.swing.JFrame {
         });
         ingresar.add(registroProducto);
 
-        registroInventarioProducto.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        registroInventarioProducto.setText("Ingresar Inventario Tienda");
-        registroInventarioProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registroInventarioProductoActionPerformed(evt);
-            }
-        });
-        ingresar.add(registroInventarioProducto);
-
         registroTiempoTiendas.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         registroTiempoTiendas.setText("Ingresar Tiempo Tiendas");
         registroTiempoTiendas.addActionListener(new java.awt.event.ActionListener() {
@@ -480,13 +470,6 @@ public class EmpleadosMenu extends javax.swing.JFrame {
       registrarProducto.show();
       
     }//GEN-LAST:event_registroProductoActionPerformed
-
-    private void registroInventarioProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroInventarioProductoActionPerformed
-      
-  
-      
-      
-    }//GEN-LAST:event_registroInventarioProductoActionPerformed
 
     private void registroEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroEmpleadoActionPerformed
       IngresarEmpleados registrarEmpleado = new IngresarEmpleados();
@@ -708,7 +691,6 @@ public class EmpleadosMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem realizarVenta;
     private javax.swing.JMenuItem registroCliente;
     private javax.swing.JMenuItem registroEmpleado;
-    private javax.swing.JMenuItem registroInventarioProducto;
     private javax.swing.JMenuItem registroProducto;
     private javax.swing.JMenuItem registroTiempoTiendas;
     private javax.swing.JMenuItem registroTienda;
