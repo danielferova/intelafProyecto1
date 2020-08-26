@@ -1,0 +1,135 @@
+CREATE SCHEMA IF NOT EXISTS intelafProyecto;
+
+USE intelafProyecto;
+
+CREATE TABLE IF NOT EXISTS TIENDA (
+  Nombre_Tienda VARCHAR(35) NOT NULL,
+  Direccion_Tienda VARCHAR(45) NOT NULL,
+  Id_Tienda VARCHAR(13) NOT NULL,
+  Telefono_1 VARCHAR(15) NOT NULL,
+  Telefono_2 VARCHAR(15) NULL,
+  Correo_Tienda VARCHAR(30) NULL,
+  Horario_Tienda VARCHAR(45) NULL,
+  PRIMARY KEY (Id_Tienda));
+
+CREATE TABLE IF NOT EXISTS EMPLEADO (
+  Nombre_Empleado VARCHAR(35) NOT NULL,
+  Id_Empleado VARCHAR(13) NOT NULL,
+  Telefono_Empleado VARCHAR(15) NOT NULL,
+  Dpi_Empleado VARCHAR(13) NOT NULL,
+  Nit_Empleado VARCHAR(13) NULL,
+  Correo_Empleado VARCHAR(30) NULL,
+  Direccion_Empleado VARCHAR(45) NULL,
+  PRIMARY KEY (Id_Empleado));
+
+  CREATE TABLE IF NOT EXISTS CLIENTE (
+  Nombre_Cliente VARCHAR(35) NOT NULL,
+  Nit_Cliente VARCHAR(13) NOT NULL,
+  Telefono_Cliente VARCHAR(20) NOT NULL,
+  Credito_Compra DOUBLE NOT NULL,
+  Dpi_Cliente VARCHAR(13) NULL,
+  Correo_Cliente VARCHAR(30) NULL,
+  Direccion_Cliente VARCHAR(45) NULL,
+  PRIMARY KEY (Nit_Cliente));
+
+  CREATE TABLE IF NOT EXISTS TIEMPO (
+  Id_Tiempo INT NOT NULL AUTO_INCREMENT,
+  Tienda_Origen VARCHAR(13) NOT NULL,
+  Tienda_Destino VARCHAR(13) NOT NULL,
+  Tiempoen_Dias INT NOT NULL,
+  PRIMARY KEY (Id_Tiempo),
+  CONSTRAINT fk_TIEMPO_ENVIO_TIENDA1
+    FOREIGN KEY (Tienda_Origen)
+    REFERENCES TIENDA (Id_Tienda),
+  CONSTRAINT fk_TIEMPO_ENVIO_TIENDA2
+    FOREIGN KEY (Tienda_Destino)
+    REFERENCES TIENDA (Id_Tienda));
+
+  CREATE TABLE IF NOT EXISTS PRODUCTO (
+  Nombre_Producto VARCHAR(35) NOT NULL,
+  Fabricante_Producto VARCHAR(45) NOT NULL,
+  Id_Producto VARCHAR(13) NOT NULL,
+  Existencias_Cantidad INT NOT NULL,
+  Precio_Producto DOUBLE NOT NULL,
+  Id_Tienda VARCHAR(13) NOT NULL,
+  Descripcion_Producto VARCHAR(180) NULL,
+  Garantia_Producto INT NULL,
+  PRIMARY KEY (Id_Producto, Id_Tienda),
+  CONSTRAINT fk_PRODUCTO_TIENDA1
+    FOREIGN KEY (Id_Tienda)
+    REFERENCES TIENDA (Id_Tienda));
+
+  CREATE TABLE IF NOT EXISTS PEDIDO (
+  Id_Pedido INT NOT NULL AUTO_INCREMENT,
+  Tienda_Origen VARCHAR(13) NOT NULL,
+  Tienda_Destino VARCHAR(13) NOT NULL,
+  Fecha DATE NOT NULL,
+  Nit_Cliente VARCHAR(13) NOT NULL,
+  Total DOUBLE NOT NULL,
+  Anticipo_Total DOUBLE NOT NULL,
+  TotalPagar_Pedido DOUBLE NULL,
+  Fecha_Entrega DATE NULL,
+  Estado_Pedido VARCHAR(10) NULL,
+  PRIMARY KEY (Id_Pedido),
+  CONSTRAINT fk_PEDIDO_CLIENTES1
+    FOREIGN KEY (Nit_Cliente)
+    REFERENCES CLIENTE (Nit_Cliente),
+  CONSTRAINT fk_PEDIDO_TIENDA1
+    FOREIGN KEY (Tienda_Origen)
+    REFERENCES TIENDA (Id_Tienda),
+  CONSTRAINT fk_PEDIDO_TIENDA2
+    FOREIGN KEY (Tienda_Destino)
+    REFERENCES TIENDA (Id_Tienda));
+
+  CREATE TABLE IF NOT EXISTS VENTAS (
+  Id_Ventas INT NOT NULL AUTO_INCREMENT,
+  Id_Tienda VARCHAR(13) NOT NULL,
+  Nit_Cliente VARCHAR(13) NOT NULL,
+  Fecha_Ventas DATE NOT NULL,
+  Id_Pedido INT NULL,
+  Anticipo_TotalVentas DOUBLE NULL,
+  Total_Ventas DOUBLE NOT NULL,
+  Total_Pagar DOUBLE NOT NULL,
+  PRIMARY KEY (Id_Ventas),
+  CONSTRAINT fk_VENTAS_CLIENTES1
+    FOREIGN KEY (Nit_Cliente)
+    REFERENCES CLIENTE (Nit_Cliente),
+  CONSTRAINT fk_VENTAS_PEDIDO1
+    FOREIGN KEY (Id_Pedido)
+    REFERENCES PEDIDO (Id_Pedido),
+  CONSTRAINT fk_VENTAS_TIENDA1
+    FOREIGN KEY (Id_Tienda)
+    REFERENCES TIENDA (Id_Tienda));
+
+  CREATE TABLE IF NOT EXISTS REGISTRO_VENTAS (
+  Id_Registroventas INT NOT NULL AUTO_INCREMENT,
+  Id_Ventas INT NOT NULL,
+  Id_Producto VARCHAR(13) NOT NULL,
+  Cantidad_Existencia INT NOT NULL,
+  Cantidad_Ventas INT NOT NULL,
+  Fecha_Ventas DATE NOT NULL,
+  Id_Tienda VARCHAR(13) NOT NULL,
+  PRIMARY KEY (Id_Registroventas),
+  CONSTRAINT fk_REGISTRO_VENTAS_VENTAS1
+    FOREIGN KEY (Id_Ventas)
+    REFERENCES VENTAS (Id_Ventas),
+  CONSTRAINT fk_REGISTRO_VENTAS_PRODUCTO1
+    FOREIGN KEY (Id_Producto)
+    REFERENCES PRODUCTO (Id_Producto),
+  CONSTRAINT fk_REGISTRO_VENTAS_TIENDA1
+    FOREIGN KEY (Id_Tienda)
+    REFERENCES TIENDA (Id_Tienda));
+
+  CREATE TABLE IF NOT EXISTS DESCRIPCION_PEDIDO (
+  Id_Descripcionpedido INT NOT NULL AUTO_INCREMENT,
+  Id_Pedido INT NOT NULL,
+  Fecha DATE NOT NULL,
+  Id_Producto VARCHAR(13) NOT NULL,
+  Cantidad_Tienda INT NOT NULL,
+  Total_Producto DOUBLE NOT NULL,
+  Anticipo_Total DOUBLE NOT NULL,
+  Estado_Pedido VARCHAR(10) NULL,
+  PRIMARY KEY (Id_Descripcionpedido, Id_Pedido),
+  CONSTRAINT fk_DESCRIPCION_PEDIDO_PRODUCTO1
+    FOREIGN KEY (Id_Producto)
+    REFERENCES PRODUCTO (Id_Producto));
