@@ -62,4 +62,28 @@ public class NuevosClientes extends Conexion {
             return false;
         }   
     }
+       public CLIENTE obtenerCliente(String codigo){
+        String query = "SELECT * FROM CLIENTE WHERE NIT = ?";
+        CLIENTE cliente = null;
+                
+        Connection conexion = null;
+        PreparedStatement obtener = null;
+        ResultSet rs  = null;
+        
+        try {
+            
+            obtener = conexion.prepareStatement(query);
+            obtener.setString(1, codigo);
+            rs = obtener.executeQuery();
+            if(rs.next()){
+             cliente = new CLIENTE (rs.getString("Nombre_Empleado"), rs.getString("Nit_Cliente"), rs.getString("Telefono_Cliente"),rs.getDouble("Credito_Compra"),rs.getString("Dpi_Cliente"),rs.getString("Correo_CLiente"),rs.getString("Direccion_Cliente"));
+              }
+        } catch (SQLException ex) {
+            Logger.getLogger(NuevosClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        return cliente;
+    
+    }
 }

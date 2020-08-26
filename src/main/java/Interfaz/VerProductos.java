@@ -203,11 +203,14 @@ public class VerProductos extends javax.swing.JInternalFrame {
 
     private void buscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProductoActionPerformed
         // TODO add your handling code here:
+        
+        //mis campos
         String campo = nombre.getText();
         String campo1 = codigo.getText();
         String campo2 = tienda.getText();
         String where = "";
         
+        //query del where para mostrarlos en mis texfields
         if(!"".equals(campo)||!"".equals(campo1)||!"".equals(campo2)){
             where = "WHERE Nombre_Producto = '" + campo + "' OR Id_Producto ='" + campo1 +"' OR Id_Tienda ='" + campo2 + "'";
                }

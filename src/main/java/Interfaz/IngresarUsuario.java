@@ -41,11 +41,10 @@ public class IngresarUsuario extends javax.swing.JFrame {
     }
    
      //para ver si existe mis datos de empleado
-     public EMPLEADO verificarEstadoBD(){
+     public EMPLEADO loginEmpleado(){
             NuevosEmpleados existeTienda = new NuevosEmpleados();
             EMPLEADO t = existeTienda.obtenerEmpleado();
          return t;
-        
         }
      //agregar nombres
        public void insertarNombresE(ArrayList<String> nombres){
@@ -198,6 +197,7 @@ public class IngresarUsuario extends javax.swing.JFrame {
 
     private void iniciarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarCActionPerformed
         // TODO add your handling code here:
+       
         this.setVisible(false);
         AccesoClientes llamandoC = new AccesoClientes();
         llamandoC.setVisible(true);

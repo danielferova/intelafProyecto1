@@ -30,6 +30,10 @@ public class ClientesMenu extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.ORANGE);
         cargarIcono(imagen);
     }
+
+    public ClientesMenu() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
       public void cargarIcono(String NombreImagen)
     {
        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource(NombreImagen));

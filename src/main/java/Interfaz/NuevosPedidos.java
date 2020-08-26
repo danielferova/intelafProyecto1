@@ -7,8 +7,12 @@ package Interfaz;
 
 import ConexionBD.Conexion;
 import java.awt.Color;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -82,7 +86,7 @@ public class NuevosPedidos extends javax.swing.JInternalFrame {
 
         lblNombre = new javax.swing.JLabel();
         lblCodigoFabricante = new javax.swing.JLabel();
-        ventaCantidad = new javax.swing.JTextField();
+        cantidad = new javax.swing.JTextField();
         lblDescripcion = new javax.swing.JLabel();
         registrarProducto = new javax.swing.JButton();
         lblCodigoFabricante1 = new javax.swing.JLabel();
@@ -97,12 +101,12 @@ public class NuevosPedidos extends javax.swing.JInternalFrame {
         lblCodigoFabricante7 = new javax.swing.JLabel();
         lblCodigoFabricante5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTablePedidos = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        tablaPedido = new javax.swing.JTable();
+        nombre = new javax.swing.JTextField();
+        precio = new javax.swing.JTextField();
+        totalApagar = new javax.swing.JTextField();
+        inventario = new javax.swing.JTextField();
+        descripcion = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 101, 0));
         setClosable(true);
@@ -122,15 +126,15 @@ public class NuevosPedidos extends javax.swing.JInternalFrame {
         lblCodigoFabricante.setText("Inventario:");
         getContentPane().add(lblCodigoFabricante, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
 
-        ventaCantidad.setBackground(new java.awt.Color(254, 254, 254));
-        ventaCantidad.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        ventaCantidad.setForeground(new java.awt.Color(1, 1, 1));
-        ventaCantidad.addActionListener(new java.awt.event.ActionListener() {
+        cantidad.setBackground(new java.awt.Color(254, 254, 254));
+        cantidad.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        cantidad.setForeground(new java.awt.Color(1, 1, 1));
+        cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ventaCantidadActionPerformed(evt);
+                cantidadActionPerformed(evt);
             }
         });
-        getContentPane().add(ventaCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 240, -1));
+        getContentPane().add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 240, -1));
 
         lblDescripcion.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         lblDescripcion.setForeground(new java.awt.Color(254, 254, 254));
@@ -193,9 +197,9 @@ public class NuevosPedidos extends javax.swing.JInternalFrame {
         lblCodigoFabricante5.setText("Total a Pagar:");
         getContentPane().add(lblCodigoFabricante5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, -1, -1));
 
-        jTablePedidos.setBackground(new java.awt.Color(254, 254, 254));
-        jTablePedidos.setForeground(new java.awt.Color(1, 1, 1));
-        jTablePedidos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPedido.setBackground(new java.awt.Color(254, 254, 254));
+        tablaPedido.setForeground(new java.awt.Color(1, 1, 1));
+        tablaPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -203,64 +207,106 @@ public class NuevosPedidos extends javax.swing.JInternalFrame {
                 "Producto", "Precio"
             }
         ));
-        jTablePedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaPedido.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTablePedidosMouseClicked(evt);
+                tablaPedidoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTablePedidos);
+        jScrollPane1.setViewportView(tablaPedido);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 620, 360));
 
-        jTextField1.setBackground(new java.awt.Color(254, 254, 254));
-        jTextField1.setForeground(new java.awt.Color(1, 1, 1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 170, 30));
+        nombre.setBackground(new java.awt.Color(254, 254, 254));
+        nombre.setForeground(new java.awt.Color(1, 1, 1));
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 170, 30));
 
-        jTextField2.setBackground(new java.awt.Color(254, 254, 254));
-        jTextField2.setForeground(new java.awt.Color(1, 1, 1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 170, -1));
+        precio.setBackground(new java.awt.Color(254, 254, 254));
+        precio.setForeground(new java.awt.Color(1, 1, 1));
+        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 170, -1));
 
-        jTextField3.setBackground(new java.awt.Color(254, 254, 254));
-        jTextField3.setForeground(new java.awt.Color(1, 1, 1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, 150, -1));
+        totalApagar.setBackground(new java.awt.Color(254, 254, 254));
+        totalApagar.setForeground(new java.awt.Color(1, 1, 1));
+        getContentPane().add(totalApagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, 150, -1));
 
-        jTextField4.setBackground(new java.awt.Color(254, 254, 254));
-        jTextField4.setText("jTextField4");
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 240, -1));
+        inventario.setBackground(new java.awt.Color(254, 254, 254));
+        inventario.setText("jTextField4");
+        getContentPane().add(inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 240, -1));
 
-        jTextField5.setBackground(new java.awt.Color(254, 254, 254));
-        jTextField5.setForeground(new java.awt.Color(1, 1, 1));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 450, 60));
+        descripcion.setBackground(new java.awt.Color(254, 254, 254));
+        descripcion.setForeground(new java.awt.Color(1, 1, 1));
+        getContentPane().add(descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 450, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ventaCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventaCantidadActionPerformed
+    private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ventaCantidadActionPerformed
+    }//GEN-LAST:event_cantidadActionPerformed
 
     private void registrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarProductoActionPerformed
         // TODO add your handling code here:
+        
+        String campo = nombre.getText();
+        String campo1 = precio.getText();
+        String campo2 = totalApagar.getText();
+        String campo3 = cantidad.getText();
+        String campo4 = inventario.getText();
+        String campo5 = descripcion.getText();
+        String where = "";
+        
+        if(!"".equals(campo)||!"".equals(campo1)||!"".equals(campo2)){
+            where = "WHERE Nombre_Producto = '" + campo + "' OR Id_Producto ='" + campo1 +"' OR Id_Tienda ='" + campo2 + "'";
+               }
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            tablaPedido.setModel(model);
+            Conexion con = new Conexion();
+            Connection c = con.conectandoBase();
+            
+            String sql = "SELECT * FROM PRODUCTO " + where ;
+            ps = c.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantidadC = rsMd.getColumnCount();
+            
+            model.addColumn("Nombre");
+            model.addColumn("Fabricante");
+            model.addColumn("Código");
+            model.addColumn("Cantidad");
+            model.addColumn("Precio");
+            model.addColumn("Código Tienda");
+            model.addColumn("Descripción");
+            model.addColumn("Garantía");
+            while(rs.next()){
+                
+                Object [] filas = new Object[cantidadC];
+                for(int i = 0; i< cantidadC; i++){
+                  filas[i] = rs.getObject(i + 1);
+            }
+                model.addRow(filas);
+                
+            }
+            
+        }catch(SQLException ex) {     
+        }
     }//GEN-LAST:event_registrarProductoActionPerformed
 
-    private void jTablePedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePedidosMouseClicked
+    private void tablaPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPedidoMouseClicked
         // TODO add your handling code here:
       //  int seleccion = jTablePedidos.rowAtPoint(evt.getPoint());
        // productoN.setText(String.valueOf(jTablePedidos.getValueAt(seleccion, 0)));
         
-    }//GEN-LAST:event_jTablePedidosMouseClicked
+    }//GEN-LAST:event_tablaPedidoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cantidad;
     private javax.swing.JComboBox<String> codigoCliente;
     private javax.swing.JComboBox<String> comboTienda;
+    private javax.swing.JTextField descripcion;
+    private javax.swing.JTextField inventario;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTablePedidos;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lblCodigoFabricante;
     private javax.swing.JLabel lblCodigoFabricante1;
     private javax.swing.JLabel lblCodigoFabricante2;
@@ -271,9 +317,12 @@ public class NuevosPedidos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombre1;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField precio;
     private javax.swing.JComboBox<String> productoN;
     private javax.swing.JButton registrarProducto;
-    private javax.swing.JTextField ventaCantidad;
+    private javax.swing.JTable tablaPedido;
+    private javax.swing.JTextField totalApagar;
     private com.toedter.calendar.JDateChooser ventaFecha;
     // End of variables declaration//GEN-END:variables
 }

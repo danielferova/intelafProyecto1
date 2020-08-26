@@ -6,6 +6,7 @@
 package Interfaz;
 
 import ConexionBD.Conexion;
+import EntidadesMapeo.CLIENTE;
 import InterfazClientes.ClientesMenu;
 import NuevosDatos_Entidades.NuevosClientes;
 import java.awt.Color;
@@ -21,7 +22,7 @@ import javax.swing.JOptionPane;
  * @author danielferova
  */
 public class AccesoClientes extends javax.swing.JFrame {
-    protected ArrayList<String> tablaTienda= new ArrayList<>();
+    
     String Icono =  "logo2.png";
     
 
@@ -34,7 +35,6 @@ public class AccesoClientes extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.ORANGE);
         cargarIcono(Icono);
         nuevosClientes = new NuevosClientes();
-        llenarCombo();
     }
 
     /**
@@ -50,7 +50,6 @@ public class AccesoClientes extends javax.swing.JFrame {
         nitC = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         accederC = new javax.swing.JButton();
-        nombreCliente = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sesion");
@@ -79,14 +78,6 @@ public class AccesoClientes extends javax.swing.JFrame {
             }
         });
 
-        nombreCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione:" }));
-        nombreCliente.setToolTipText("");
-        nombreCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreClienteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,19 +95,13 @@ public class AccesoClientes extends javax.swing.JFrame {
                             .addComponent(intelaf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(nitC, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(147, 147, 147))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(198, 198, 198))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(intelaf, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(108, 108, 108)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nitC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -132,54 +117,34 @@ public class AccesoClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nitCActionPerformed
 
-    private void llenarCombo() {
-        
-        Conexion conexion = new Conexion();
-        ResultSet rs = conexion.getTabla("SELECT Nombre_Cliente, Nit_Cliente FROM CLIENTE");
-        try {
-            while (rs.next()) {
-                nombreCliente.addItem(rs.getString(1));
-                tablaTienda.add(rs.getString(2));
-            }
-
-        } catch (Exception e) {
-
-        }
-    }
+   
     
     private void accederCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accederCActionPerformed
         //Para poder ingresar la contraseña, el id_Empleado
-         if(nombreCliente.getSelectedIndex()!=0){
-        ClientesMenu accesarAlMenu = new ClientesMenu(nombreCliente.getItemAt(nombreCliente.getSelectedIndex()),tablaTienda.get(nombreCliente.getSelectedIndex()-1));
-        accesarAlMenu.setVisible(true);
-        this.setVisible(false);
-        } else
+        
+        String codigo =nitC.getText();
+        Verificar usuario = new Verificar();
+        CLIENTE cliente = usuario.loginCliente(codigo);
+        if(cliente != null)
         {
-            JOptionPane.showMessageDialog(null, "ERROR SELECIONE UN CLIENTE");
-                   
+            JOptionPane.showMessageDialog(null, "BIENVENIDO");
+            
+        ClientesMenu accesarAlMenu = new ClientesMenu();
+        accesarAlMenu.setVisible(true);
+        this.setVisible(false);   
+        
+        }
+        else if(nitC.getText()==""){
+            JOptionPane.showMessageDialog(null, "Ingrese su NIT");
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "ERROR NIT incorrecto");
+        
         }
         
-        
-       /* if(nitC.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "-- INGRESE SU NIT ---" );
-        }else{
-            if(nuevosClientes.existeCliente(nitC.getText())){
-                nitC.setText("");
-                ClientesMenu menuClientes = new ClientesMenu();
-                //para pasar el nombre del empleado
-                //menuEmpleados.getNombreEmpleado().setText(nuevosClientes.llamarNombreEmpleado(nameEmpleados.getSelectedItem().toString()));
-                this.setVisible(false);
-                menuClientes.setVisible(true);
-            }else{
-                JOptionPane.showMessageDialog(this, "-- ERROR NIT INCORRECTO --");
-                nitC.setText("");
-            }
-        }*/
+       
     }//GEN-LAST:event_accederCActionPerformed
-
-    private void nombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreClienteActionPerformed
 
      public void cargarIcono(String NombreImagen)
     {
@@ -195,6 +160,5 @@ public class AccesoClientes extends javax.swing.JFrame {
     private javax.swing.JLabel intelaf;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField nitC;
-    private javax.swing.JComboBox<String> nombreCliente;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,7 +21,7 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) throws SQLException{
         IngresarUsuario usuario = new IngresarUsuario();
-        EMPLEADO empleado =usuario.verificarEstadoBD();
+        EMPLEADO empleado =usuario.loginEmpleado();
         System.out.println("Funciona");  
         
         if(empleado == null){
