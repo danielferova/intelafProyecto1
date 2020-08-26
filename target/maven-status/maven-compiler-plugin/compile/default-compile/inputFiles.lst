@@ -8,6 +8,7 @@
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/EntidadesMapeo/REGISTRO_VENTAS.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/Interfaz/VerTiempoEnvio.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/EntidadesMapeo/DESCRIPCION_PEDIDO.java
+/home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/Interfaz/Verificar.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/Interfaz/EmpleadosMenu.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/Interfaz/IngresarClientes.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/EntidadesMapeo/CLIENTE.java
@@ -24,14 +25,12 @@
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/ConexionBD/Conexion.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/Main.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/NuevosDatos_Entidades/NuevosProducto.java
-/home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/Interfaz/IngresarNuevoProducto.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/NuevosDatos_Entidades/NuevosTienda.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/EntidadesMapeo/TIEMPO_ENVIO.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/Interfaz/VerEmpleados.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/NuevosDatos_Entidades/NuevosClientes.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/Interfaz/IngresarProducto.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/Interfaz/InicioIntelaf.java
-/home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/InterfazClientes/prueba.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/Interfaz/VerClientes.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/Interfaz/IngresarUsuario.java
 /home/danielferova/NetBeansProjects/IntelafProyecto/src/main/java/Interfaz/inicioArchivo.java

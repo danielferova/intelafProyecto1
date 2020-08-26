@@ -22,7 +22,7 @@ public class NuevoTiempo_envio extends Conexion{
     
     PreparedStatement ps = null;
     Connection conexion = conectandoBase();
-    
+    //metodo para greistrar mi entidad TIEMPO
     public boolean registrarTiempo_envio(TIEMPO_ENVIO tiempo){
         String sql = "INSERT INTO TIEMPO ( Tienda_Origen, Tienda_Destino, Tiempoen_Dias ) VALUES(?,?,?)";
         try {

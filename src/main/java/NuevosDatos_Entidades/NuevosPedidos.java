@@ -28,11 +28,10 @@ public class NuevosPedidos extends Conexion {
      
     //para registrar mis pedidos junto con Descripcion_pedidos
     public boolean registrarPedidos(PEDIDO pedidos){
-        
+        //query para isnerta nuestros campos en DESCRIPCION_PEDIDO
         String sql = "INSERT INTO DESCRIPCION_PEDIDO (Id_Pedido, Fecha, Id_Producto, Cantidad_Tienda, Total_Producto, Anticipo_Total, Estado_Pedido)"
                 + "VALUES(?,?,?,?,?,?,?)";
-                 //   + "ON DUPLICATE KEY UPDATE Codigo_Pedido=Codigo_Pedido, Total=Total+?,Total_Restante=Total-Anticipo_Total" ;
-                 
+      //query para isnertar y mandar a hacer una consulta a nuestra tabal TIEMPO para comparar Tienda Origen y Tienda Destino
         String sql1 = "INSERT INTO PEDIDO (Id_Pedido, Tienda_Origen, Tienda_Destino, Fecha, Nit_Cliente, Total, Anticipo_Total, TotalPagar_Pedido, Fecha_Entrega, Estado_Pedido) "
                 + "VALUES(?,?,?,?,?,"
                      + "?,?,?,"

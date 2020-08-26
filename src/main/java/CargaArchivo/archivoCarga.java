@@ -33,15 +33,15 @@ import java.util.ArrayList;
  * @author danielferova
  */
 public class archivoCarga {
- private NuevosPedidos dBConectorPedido;
-    private NuevosDescripcionPedido dBConectorPedidoProducto;
-     private ArrayList<String> registrosIgnorados;
 
+     private ArrayList<String> registrosIgnorados;
+/**
+ * atributos
+ */
     public archivoCarga() {
-            dBConectorPedido = new NuevosPedidos();
-        dBConectorPedidoProducto = new NuevosDescripcionPedido();
         registrosIgnorados = new ArrayList<>();
     }
+    //metodo para leer mi archivo txt
     public void llamandoArchivo(File archivo) throws FileNotFoundException, IOException
     {
         String cadena;
@@ -56,7 +56,7 @@ public class archivoCarga {
          catch (IOException e) {
             }                
     }
- 
+    //metodo para analizar el archivo para reconocer palabras
       public void analizandoDatos (String datos){
         if(datos.contains("TIENDA"))
         {  
@@ -86,7 +86,7 @@ public class archivoCarga {
             System.out.println("ERROR, NO HAY DATOS");
         }
     }
-    
+    //metodo para cargar datos de la tienda del txt
       public void datosTienda(String datos){
         String [] partes = datos.split(",");
         System.out.println(datos);
@@ -100,7 +100,7 @@ public class archivoCarga {
         NuevosDatos_Entidades.NuevosTienda llenar = new NuevosTienda();
         llenar.insertarTienda(nuevo);    
         }
-      
+      //para cargar datos de empleados del txt 
         public void datosEmpleados(String datos){
         String [] partes = datos.split(",");
         System.out.println(datos);
@@ -114,7 +114,7 @@ public class archivoCarga {
         NuevosDatos_Entidades.NuevosEmpleados llenar = new NuevosEmpleados();
         llenar.registrarEmpleado(nuevo);      
         }
-        
+        //metodo para cargar datos ded clientes
           public void datosClientes (String datos){
         String [] partes = datos.split(",");
         Double creditoCompra = Double.parseDouble(partes[4]);
@@ -129,7 +129,7 @@ public class archivoCarga {
         NuevosDatos_Entidades.NuevosClientes llenar = new NuevosClientes();
         llenar.agregarClientes(nuevo);
         }
-    
+    //cargar datos del tiempo en le txt
        public void datosTiempo_envio (String datos){
         String [] partes = datos.split(",");
         int tiempoEntreTiendas = Integer.parseInt(partes[3]);
@@ -143,11 +143,10 @@ public class archivoCarga {
         NuevosDatos_Entidades.NuevoTiempo_envio llenar = new NuevoTiempo_envio();
         llenar.registrarTiempo_envio(nuevo);
         }
-       
+       //metodo para cargar datos del producto del txt campos obligatorios
          public void datosProducto(String datos){
         String [] partes = datos.split(",");
         int existencias_cantidad = Integer.parseInt(partes[4]);
-      //  int garantia_producto = Integer.parseInt(partes[8]);
         Double precio_producto = Double.parseDouble(partes[5]);
         System.out.println(datos);
         System.out.println("Tabla: "+partes[0]);
@@ -157,25 +156,20 @@ public class archivoCarga {
         System.out.println("Cantidad: "+existencias_cantidad);
         System.out.println("Precio: "+precio_producto);
         System.out.println("IdTienda: "+partes[6]);
-         // System.out.println("Parte 6 CodigoTienda: "+partes[7]);
-        //    System.out.println("Parte 6 CodigoTienda: "+ garantia_producto);
+  
         PRODUCTO nuevo = new PRODUCTO (partes[1], partes[2], partes[3], existencias_cantidad, precio_producto, partes[6] );
         NuevosDatos_Entidades.NuevosProducto llenar = new NuevosProducto();
         llenar.insertarProducto(nuevo);    
-       //  String id_tienda=partes[6];
-             //   int cantidad_producto=Integer.parseInt(partes[4]);
-             //, partes[7], garantia_producto
+   
         }   
-         
+         //metodo para cargar pedidos en el txt los campos obligatorios
            public void datosPedido(String datos){
         String [] partes = datos.split(",");
         int idPedido = Integer.parseInt(partes[1]);
         int cantidadTienda = Integer.parseInt(partes[7]);
         Double total = Double.parseDouble(partes[8]);
         Double anticipoTotal = Double.parseDouble(partes[9]);
-       
-        //Double totalApagar = Double.parseDouble(partes[8]);
-        //Boolean estadoPedido = Boolean.getBoolean(partes[10]);
+
         System.out.println(datos);
         System.out.println("Tabla: "+partes[0]);
         System.out.println("IdPedido "+ idPedido);
@@ -187,21 +181,10 @@ public class archivoCarga {
         System.out.println("Cantidad: "+ cantidadTienda);
         System.out.println("Total: "+ total);
         System.out.println("Anticipo: "+ anticipoTotal);
-     //   System.out.println("Parte 3 fecha2: "+partes[10]);
-     //, totalApagar, partes[9], estadoPedido
      
         PEDIDO nuevo = new PEDIDO (idPedido, partes[2], partes[3], partes[4], partes[5], partes[6], cantidadTienda, total, anticipoTotal);
         NuevosDatos_Entidades.NuevosPedidos llenar = new NuevosPedidos();
         llenar.registrarPedidos(nuevo);    
-         //String idProducto= partes[6];
-             //   int cantidadTienda = Integer.parseInt(partes[7]);
-               // DESCRIPCION_PEDIDO subPedido = new DESCRIPCION_PEDIDO(idProducto, cantidadTienda);
-     //ingresar a la base de datos
-  //   dBConectorPedido.registrarPedidos(nuevo);
-   //  dBConectorPedidoProducto.registrarPedidoProducto(subPedido,nuevo.getIdPedido());
+       
         }   
-           
-             public ArrayList<String> getRegistrosIgnorados() {
-        return registrosIgnorados;
-    }
 }

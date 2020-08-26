@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author danielferova
  */
 public class NuevosProducto extends Conexion{
-    
+    //metodo para insertar o agregar producto por medio de nuestros campos y la base de datos
      public boolean insertarProducto(PRODUCTO producto){
 
         PreparedStatement ps = null;

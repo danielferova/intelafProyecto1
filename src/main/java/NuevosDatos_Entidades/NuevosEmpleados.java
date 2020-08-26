@@ -24,7 +24,7 @@ public class NuevosEmpleados extends Conexion
          PreparedStatement ps = null;
          Connection conexion = conectandoBase();
          ResultSet resultSet = null;
-         
+    //para registrar el empleado en la base de datos, insertar sus campos
     public boolean registrarEmpleado(EMPLEADO empleado) {
 
         String sql = "INSERT INTO EMPLEADO (Nombre_Empleado, Id_Empleado, Telefono_Empleado, Dpi_Empleado, Nit_Empleado , Correo_Empleado, Direccion_Empleado) VALUES(?,?,?,?,?,?,?)";
@@ -45,7 +45,7 @@ public class NuevosEmpleados extends Conexion
         }
 
     }
-    
+    //query para buscar a mi empleado por medio de su ID
      public boolean existeEmpleado(String codigo){
          String sql = "SELECT * FROM EMPLEADO WHERE Id_Empleado = ?";
         try {
@@ -64,7 +64,7 @@ public class NuevosEmpleados extends Conexion
         }
         
     }
-     
+     //metodo para por medio de ID busque uno el nombre del empleado
      public String llamarNombreEmpleado(String nombre){
         try {
            String sql = "SELECT Id_Empleado FROM EMPLEADO WHERE Nombre_Empleado = ?";
@@ -80,7 +80,7 @@ public class NuevosEmpleados extends Conexion
             return null;
         }
     }
-     
+     //para obtener los campos de o atributos relacionandolo con nuestra Clase EMPLEADO (QUERY)
      public EMPLEADO obtenerEmpleado(){
          EMPLEADO empleado = null;
             Conexion conexion = new Conexion();

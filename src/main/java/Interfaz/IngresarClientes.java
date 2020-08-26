@@ -69,6 +69,11 @@ public class IngresarClientes extends javax.swing.JInternalFrame {
                 nombreCActionPerformed(evt);
             }
         });
+        nombreC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreCKeyTyped(evt);
+            }
+        });
 
         lblCodigoFabricante.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         lblCodigoFabricante.setForeground(new java.awt.Color(254, 247, 247));
@@ -260,6 +265,18 @@ public class IngresarClientes extends javax.swing.JInternalFrame {
     private void nombreCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreCActionPerformed
+
+    private void nombreCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreCKeyTyped
+        // TODO add your handling code here:
+         char caracter = evt.getKeyChar();
+
+        if ((caracter < 'a' || caracter > 'z') && (caracter < 'A' || caracter > 'Z') && (caracter < ' ' || caracter > ' ') && (caracter < '0' || caracter > '9')) {
+            evt.consume();
+        }
+        if (nombreC.getText().length() == 45) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_nombreCKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

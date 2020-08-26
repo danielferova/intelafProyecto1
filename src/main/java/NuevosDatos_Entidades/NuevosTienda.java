@@ -20,12 +20,10 @@ import java.util.logging.Logger;
  * @author danielferova
  */
 public class NuevosTienda extends Conexion{
-    
+     PreparedStatement ps = null;
+     Connection conexion = conectandoBase();
+    //metodo para insertar teinda en nuestros campos y en la BD
      public boolean insertarTienda(TIENDA tienda){
-
-        PreparedStatement ps = null;
-        Connection conexion = conectandoBase();
-
         String sql = "INSERT INTO TIENDA (Nombre_Tienda, Direccion_Tienda, Id_Tienda, Telefono_1, Telefono_2, Correo_Tienda, Horario_Tienda) VALUES(?,?,?,?,?,?,?)";
         try {
             ps = conexion.prepareStatement(sql);
@@ -44,12 +42,10 @@ public class NuevosTienda extends Conexion{
         }
 
     }
-     
+     //para llamar a la Tienda
     public TIENDA llamarTienda(){
         TIENDA llamar = null;
         Conexion conexion = new Conexion();
-        PreparedStatement ps = null;
-        
         ResultSet rs = conexion.getTabla("SELECT * FROM TIENDA LIMIT 1");
         try{
             while (rs.next()){

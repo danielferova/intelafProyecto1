@@ -22,11 +22,8 @@ public class NuevosClientes extends Conexion {
         PreparedStatement ps = null;
         Connection conexion = conectandoBase();
         ResultSet resultSet = null;
-    
+    //metodo para registrar o agregar clientes con los campos de nustra base de datos
      public boolean agregarClientes(CLIENTE clientes){
-
-       
-
         String sql = "INSERT INTO CLIENTE (Nombre_Cliente, Nit_cliente, Telefono_Cliente, Credito_Compra, Dpi_Cliente, Correo_Cliente, Direccion_Cliente) VALUES(?,?,?,?,?,?,?)";
         try {
             ps = conexion.prepareStatement(sql);
@@ -44,7 +41,7 @@ public class NuevosClientes extends Conexion {
             return false;
         }
     }
-    
+    //metodo para ver a nuestro cliente por medio de NIT
       public boolean existeCliente (String nit){
          String sql = "SELECT * FROM CLIENTE WHERE Nit_Cliente = ?";
         try {
@@ -62,8 +59,9 @@ public class NuevosClientes extends Conexion {
             return false;
         }   
     }
+      //metodo para llamar al cliente por medio de su NIT
        public CLIENTE obtenerCliente(String codigo){
-        String query = "SELECT * FROM CLIENTE WHERE NIT = ?";
+        String query = "SELECT * FROM CLIENTE WHERE Nit_Cliente = ?";
         CLIENTE cliente = null;
                 
         Connection conexion = null;

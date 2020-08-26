@@ -15,7 +15,7 @@ public class NuevosDescripcionPedido extends Conexion {
          Connection conexion = conectandoBase();
          ResultSet resultSet = null;
 
-    //inicio metodos para usar en el importador de datos
+    //metodo para registrar Descrtipcion Pedido
     public void registrarDescripcion_Pedido (DESCRIPCION_PEDIDO subPedido){
         String sql = "INSERT INTO DESCRIPCION_PEDIDO (Id_pedido, Id_Producto, Cantidad_Tienda, Total_Producto) VALUES (?,?,?,?)";
         try {
@@ -31,5 +31,4 @@ public class NuevosDescripcionPedido extends Conexion {
             System.out.println("ERROR AL INTENTAR REGISTRAR DESCRIPCION PEDIDO");
         }
     }
-    //fin metodos para usar en el importador de datos
 }

@@ -5,30 +5,7 @@
  */
 package Interfaz;
 
-//import frontend.empleados.Editar_Cliente;
-//import frontend.empleados.Editar_Empleado;
-//import frontend.empleados.Modificar_Producto_Tienda;
-//import frontend.empleados.Modificar_Tiempo_Tienda;
-//import frontend.empleados.Registrar_Cliente;
-//import frontend.empleados.Registrar_Empleado;
-//import frontend.empleados.Registrar_Producto;
-//import frontend.empleados.Registrar_Producto_Tienda;
-//import frontend.empleados.Registrar_Tiempo_Tienda;
-//import frontend.empleados.Registrar_Tienda;
-//import frontend.empleados.Ver_Cliente;
-//import frontend.empleados.Ver_Empleado;
-//import frontend.empleados.Ver_Producto;
-//import frontend.empleados.Ver_Tiempo_Tienda;
-//import frontend.empleados.Ver_Tienda;
-//import frontend.reportes.Reporte_Atrasados;
-//import frontend.reportes.Reporte_Compras;
-//import frontend.reportes.Reporte_Existencia_Entrada;
-//import frontend.reportes.Reporte_Mas_Vendido_Tienda;
-//import frontend.reportes.Reporte_Mas_Vendido;
-//import frontend.reportes.Reporte_No_Vendido;
-//import frontend.reportes.Reporte_Pedidos;
-//import frontend.reportes.Reporte_Pedidos_En_Curso;
-//import frontend.reportes.Reporte_Pedidos_Entregar;
+
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -50,7 +27,6 @@ public class EmpleadosMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         //this.getContentPane().setBackground(Color.ORANGE);
         cargarIcono(imagen);
-        
     }
 
     /**
@@ -537,73 +513,54 @@ public class EmpleadosMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_verTiempoActionPerformed
 
     private void editarTiempoTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarTiempoTiendaActionPerformed
-  //    Modificar_Tiempo_Tienda editarTiempoTienda1 = new Modificar_Tiempo_Tienda();
-    //  escritorio.removeAll();
-     // escritorio.updateUI();
-      //escritorio.add(editarTiempoTienda1);
-      //editarTiempoTienda1.show();
+ 
     }//GEN-LAST:event_editarTiempoTiendaActionPerformed
 
     private void editarInventarioProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarInventarioProductoActionPerformed
-   //   Modificar_Producto_Tienda editarInventario = new Modificar_Producto_Tienda();
-    //  escritorio.removeAll();
-     // escritorio.updateUI();
-     // escritorio.add(editarInventario);
-     // editarInventario.show();
+  
       
     }//GEN-LAST:event_editarInventarioProductoActionPerformed
 
     private void realizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarVentaActionPerformed
-        // TODO add your handling code here:
-        /*NuevaVenta nuevaVenta = new NuevaVenta();
-        //asignando el codigo de tienda para la venta
-        nuevaVenta.setCodigoTienda(lblCodigoTienda.getText());
-        jdpEscritorio.add(nuevaVenta);
-        nuevaVenta.show();*/
+       
     }//GEN-LAST:event_realizarVentaActionPerformed
 
     private void realizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarPedidoActionPerformed
         // TODO add your handling code here:
-        NuevosPedidos nuevoPedido = new NuevosPedidos();
-        //nuevoPedido.setCodigoTienda(lblCodigoTienda.getText());
-       // jdpEscritorio.add(nuevoPedido);
-        escritorio.removeAll();
+      NuevosPedidos nuevoPedido = new NuevosPedidos();
+      escritorio.removeAll();
       escritorio.updateUI();
       escritorio.add(nuevoPedido);
-        nuevoPedido.show();
+      nuevoPedido.show();
         
     }//GEN-LAST:event_realizarPedidoActionPerformed
 
     private void reportePedidoPorLlegarTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportePedidoPorLlegarTiendaActionPerformed
-    //  Reporte_Pedidos_Entregar reporteEntrega = new Reporte_Pedidos_Entregar();
+    
       escritorio.removeAll();
       escritorio.updateUI();
-      //escritorio.add(reporteEntrega);
-      //reporteEntrega.show();
+     
     }//GEN-LAST:event_reportePedidoPorLlegarTiendaActionPerformed
 
     private void editarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarEmpleadoActionPerformed
-      //Editar_Empleado editarEmpleado1 = new Editar_Empleado();
+      
       escritorio.removeAll();
       escritorio.updateUI();
-      //escritorio.add(editarEmpleado1);
-      //editarEmpleado1.show();
+    
     }//GEN-LAST:event_editarEmpleadoActionPerformed
 
     private void editarCLienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarCLienteActionPerformed
-      //Editar_Cliente editarCliente = new Editar_Cliente();
+   
       escritorio.removeAll();
       escritorio.updateUI();
-      //escritorio.add(editarCliente);
-      //editarCliente.show();
+      
     }//GEN-LAST:event_editarCLienteActionPerformed
 
     private void reportePedidoLlegoTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportePedidoLlegoTiendaActionPerformed
-     // Reporte_Existencia_Entrada reporteExistencia = new Reporte_Existencia_Entrada();
+    
       escritorio.removeAll();
       escritorio.updateUI();
-     // escritorio.add(reporteExistencia);
-      //reporteExistencia.show();
+     
     }//GEN-LAST:event_reportePedidoLlegoTiendaActionPerformed
 
     private void reportePedidoAtrasadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportePedidoAtrasadoActionPerformed
@@ -615,43 +572,38 @@ public class EmpleadosMenu extends javax.swing.JFrame {
           }//GEN-LAST:event_reportePedidoAtrasadoActionPerformed
 
     private void reportePedidoRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportePedidoRutaActionPerformed
-     // Reporte_Pedidos_En_Curso reporteCurso = new Reporte_Pedidos_En_Curso();
+     
       escritorio.removeAll();
       escritorio.updateUI();
-     // escritorio.add(reporteCurso);
-      ///reporteCurso.show();
+     
     }//GEN-LAST:event_reportePedidoRutaActionPerformed
 
     private void reporteComprasClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteComprasClienteActionPerformed
-      //Reporte_Compras reporteCompras = new Reporte_Compras();
+     
       escritorio.removeAll();
       escritorio.updateUI();
-      //escritorio.add(reporteCompras);
-      //reporteCompras.show();
+     
     }//GEN-LAST:event_reporteComprasClienteActionPerformed
 
     private void reportePedidoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportePedidoClienteActionPerformed
-      //Reporte_Pedidos reportePedido = new Reporte_Pedidos();
+      
       escritorio.removeAll();
       escritorio.updateUI();
-      //escritorio.add(reportePedido);
-      //reportePedido.show();
+      
     }//GEN-LAST:event_reportePedidoClienteActionPerformed
 
     private void reporteProductoPopularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteProductoPopularActionPerformed
-      //Reporte_Mas_Vendido reportePopular = new Reporte_Mas_Vendido();
+      ;
       escritorio.removeAll();
       escritorio.updateUI();
-      //escritorio.add(reportePopular);
-      //reportePopular.show();
+    
     }//GEN-LAST:event_reporteProductoPopularActionPerformed
 
     private void reportePedidoModaTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportePedidoModaTiendaActionPerformed
-      //Reporte_Mas_Vendido_Tienda reportePopularTienda = new Reporte_Mas_Vendido_Tienda(); 
+       
       escritorio.removeAll();
       escritorio.updateUI();
-      //escritorio.add(reportePopularTienda);
-      //reportePopularTienda.show();
+      
     }//GEN-LAST:event_reportePedidoModaTiendaActionPerformed
 
     private void reporteNoVendidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteNoVendidoActionPerformed
